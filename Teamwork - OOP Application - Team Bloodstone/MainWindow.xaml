@@ -1,0 +1,117 @@
+﻿<Window x:Class="WarehouseSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Warehouse Control System" Height="550" Width="500"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        MaxWidth="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Width}"
+        MaxHeight="{Binding Source={x:Static SystemParameters.WorkArea}, Path=Height}"
+        ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.ColumnSpan="2" MouseLeftButtonDown="MoveWindow" Background="#FFE0E0E0" BorderThickness="1" CornerRadius="5,5,0,5" Margin="0,-1,-1,-1"/>
+        <TabControl Grid.Column="1">
+            <TabItem Header="Ca_tegories" x:Name="CategoryTab" Background="#FFABD3EC">
+                <ScrollViewer CanContentScroll="True">
+                    <TabControl Background="#FBFFF4" x:Name="CategorySubContainer"/>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="A_dd Product" x:Name="AddProductTab" Background="#FFABD3EC" IsSelected="True">
+                <ScrollViewer>
+                <StackPanel x:Name="AddTabChildStack" Background="#FBFFF4">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="13"/>
+                            <ColumnDefinition Width="94"/>
+                            <ColumnDefinition Width="253"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="1" Grid.Column="0" Content="Product Category:" Width="150" FontFamily="Global Serif" FontStyle="Italic" FontSize="15" FontWeight="Bold" Grid.ColumnSpan="3" HorizontalAlignment="Left" Margin="21,0,0,0"/>
+                        <ComboBox Grid.Row="1" Grid.Column="2" x:Name="productCategories" Margin="48,4,92,6" SelectedIndex="0" SelectedItem="0"/>
+                        <Button x:Name="AddButton" HorizontalAlignment="Left" Width="100" Height="23" Content="Add product" Grid.Column="2" Grid.Row="1" IsEnabled="False" Margin="194,4.5,0,5" Grid.ColumnSpan="2"/>
+                    </Grid>
+                </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Header="_Show All" x:Name="ShowAllTab" Background="#FFABD3EC" Height="22" VerticalAlignment="Bottom">
+                <ScrollViewer CanContentScroll="True">
+                    <StackPanel Background="#FBFFF4" x:Name="AllProductsStack"/>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="0">
+            <Grid Margin="0,4">
+                <Ellipse MouseDown="Close_App" RenderTransformOrigin="0.882,6.118" Stroke="#FFB6B1B1" Cursor="Hand" Width="17" Height="17">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF7D5D5" Offset="0.013"/>
+                            <GradientStop Color="#FFFBA5A5" Offset="0.996"/>
+                            <GradientStop Color="#FFAC3030" Offset="0.526"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform X="-12.988"/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <TextBlock MouseDown="Close_App" VerticalAlignment="Center" HorizontalAlignment="Center" Text="X" FontFamily="Tunga" Margin="12.213,2.731,11.546,5.068" Foreground="Black" Height="14.9"/>
+            </Grid>
+            <Grid>
+                <Ellipse MouseDown="Maximize_App" Margin="0,3" RenderTransformOrigin="0.5,0.5" Stroke="#FFB6B1B1" Cursor="Hand" Width="17" Height="17">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF7F5D5" Offset="0.013"/>
+                            <GradientStop Color="#FFFBF7A5" Offset="0.996"/>
+                            <GradientStop Color="#FFACA630" Offset="0.526"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <Rectangle MouseDown="Maximize_App" Margin="11.208,9.185,10.791,8.314" Stroke="Black" Width="8" Height="5.5"/>
+            </Grid>
+            <Grid>
+                <Ellipse MouseDown="Minimize_App" Margin="0,3" RenderTransformOrigin="0.5,0.5" Stroke="#FFB6B1B1" Cursor="Hand" Width="17" Height="17">
+                    <Ellipse.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFD5F7E4" Offset="0.013"/>
+                            <GradientStop Color="#FFA5FBC4" Offset="0.996"/>
+                            <GradientStop Color="#FF30AC57" Offset="0.526"/>
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Ellipse.RenderTransform>
+                </Ellipse>
+                <TextBlock MouseDown="Minimize_App" VerticalAlignment="Center" HorizontalAlignment="Center" Text="_" FontFamily="Shonar Bangla" Margin="12.851,3.733,12.184,3.733" Foreground="Black"/>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
