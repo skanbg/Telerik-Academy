@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Print Sequence</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type the first number:</label><input type="text" id="input-number" />
+    <input type="button" value="Show result!" onclick="print()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that prints all the numbers from 1 to N");
+        function print() {
+            var inputNumber = jsConsole.readInteger("#input-number");
+            var result = "Sequence: ";
+            for (var i = 0; i < inputNumber; i++) {
+                result += i;
+                if (i != inputNumber - 1) {
+                    result += ",";
+                }
+            }
+            jsConsole.writeLine(result);
+        }
+    </script>
+</body>
+</html>

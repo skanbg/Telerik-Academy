@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Increasing Sequence</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that finds the maximal increasing sequence in an array. ");
+        var array = [1, 1, 2, 2, 3, 3, 1, 2, 3, 4, 5, 6, 7, 4, 4, 4, 5, 6, 7];
+        jsConsole.writeLine("Array content: " + array.join(", "));
+
+        var maxSeq = [];
+        var curSeq = [];
+        for (var i = 0; i < array.length; i++) {
+            if (curSeq.length == 0 || curSeq[curSeq.length - 1] >= array[i]) {
+                curSeq = [];
+                curSeq.push(array[i]);
+            }
+            else if (curSeq[curSeq.length - 1] < array[i]) {
+                curSeq.push(array[i]);
+                if (curSeq.length > maxSeq.length) {
+                    maxSeq = curSeq;
+                }
+            }
+        }
+
+        if (maxSeq.length > 1) {
+            jsConsole.writeLine("Longest increasing sequence: " + maxSeq.join(", "));
+        } else {
+            jsConsole.writeLine("No increasing sequence found");
+        }
+    </script>
+</body>
+</html>

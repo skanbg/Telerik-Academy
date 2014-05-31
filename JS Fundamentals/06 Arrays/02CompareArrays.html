@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lexicographicall comparison</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that compares two char arrays lexicographically (letter by letter).");
+        //Initializing the arrays
+        //First array
+        var array = new Array(20);
+        for (var i = 0; i < array.length; i++) {
+            array[i] = String.fromCharCode(97 + i);
+        }
+        jsConsole.writeLine("First array content: " + array.join(", "));
+        //Second array
+        var array2 = new Array(12);
+        for (var i = array.length; i < array2.length + array.length; i++) {
+            array2[i - array.length] = String.fromCharCode(97 + i);
+        }
+        jsConsole.writeLine("Second array content: " + array2.join(", "));
+        //Begin compare
+        var longerArray = (array.length < array2.length) ? array2 : array;
+        var shorterArray = (array.length < array2.length) ? array : array2;
+        var result = 0;
+
+        for (var i = 0; i < shorterArray.length; i++) {
+            if (result != 0) {
+                break;
+            }
+            result = (shorterArray[i].charCodeAt(0) == longerArray[i].charCodeAt(0)) ? 0 : (shorterArray[i].charCodeAt(0) < longerArray[i].charCodeAt(0)) ? 1 : -1;
+        }
+        if (result == 0 && longerArray.length == shorterArray.length) {
+            jsConsole.writeLine("Both arrays have the same data!");
+        }
+        else if (result == -1) {
+            jsConsole.writeLine("This array is lexicographically first: " + longerArray.join(", "));
+        }
+        else if (result == 1 || result == 0) {
+            jsConsole.writeLine("This array is lexicographically first: " + shorterArray.join(", "));
+        }
+    </script>
+</body>
+</html>

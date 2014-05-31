@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Lexicographically smallest and largest property in document, window and navigator objects</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        function mergeObjects(outputObj, inputObj) {
+            for (i in inputObj) {
+                outputObj.push(i);
+            }
+            return outputObj;
+        }
+        jsConsole.writeLine("Write a script that finds the lexicographically smallest and largest property in document, window and navigator objects");
+        var merged = mergeObjects(new Array(), Window);
+        merged = mergeObjects(merged, Document);
+        merged = mergeObjects(merged, Navigator);
+        merged = merged.sort();
+        //Uncomment to print the array of properties
+        //for (i in merged) {
+        //    jsConsole.write(i + ": " + merged[i] + " , ");
+        //}
+        jsConsole.writeLine("lexicographically smallest: " + merged[0]);
+        jsConsole.writeLine("lexicographically largest: " + merged[merged.length - 1]);
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Print digit name</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="text" id="input" /><a href="#" onclick="print()">Result!</a>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a function that returns the last digit of given integer as an English word. Examples: 512  \"two\", 1024  \"four\", 12309  \"nine\"");
+        function print() {
+            var input = jsConsole.readInteger("#input");
+            var lastDigit = input % 10;
+            var numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+            jsConsole.writeLine("Last digit of " + input + " is " + lastDigit + "/" + numbers[lastDigit]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exchange values</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number1">Please type the first number:</label><input type="text" id="input-number1" />
+    <label for="input-number2">Please type the second number:</label><input type="text" id="input-number2" />
+    <input type="button" value="Show result!" onclick="oddOrEven()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write an expression that checks if given integer is odd or even.");
+        function oddOrEven() {
+            var firstNumber = jsConsole.readInteger("#input-number1");
+            var secondNumber = jsConsole.readInteger("#input-number2");
+            if (firstNumber > secondNumber) {
+                var tempNumber = secondNumber;
+                secondNumber = firstNumber;
+                firstNumber = tempNumber;
+            }
+            jsConsole.writeLine("The bigger number after exchange is in the second variable. The first variable value: " + firstNumber + " and th second: " + secondNumber);
+        }
+    </script>
+</body>
+</html>

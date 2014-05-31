@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Replace Tags</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('You are given a text. Write a function that changes the text in all regions:</br><upcase>text</upcase> to uppercase.</br><lowcase>text</lowcase> to lowercase</br><mixcase>text</mixcase> to mix casing(random)</br>===============================================');
+
+        function parseString(string, start, end, closingQuee) {
+            string = new String(string);  //faster performance
+            start = start || 0;
+            end = end || string.length;
+            closingQuee = closingQuee || [];
+            var tags = [
+                {
+                    opening: '<upcase>', closing: '</upcase>',
+                    action: function (text) { return text.toUpperCase(); }
+                },
+                {
+                    opening: '<lowcase>', closing: '</lowcase>',
+                    action: function (text) { return text.toLowerCase(); }
+                },
+                {
+                    opening: '<mixcase>', closing: '</mixcase>',
+                    action: function (text) {
+                        var outputWord = "";
+
+                        for (var i = 0; i < text.length; i++) {
+                            if (Math.floor(Math.random() * 10) % 2) {
+                                outputWord += text[i].toUpperCase();
+                            }
+                            else {
+                                outputWord += text[i].toLowerCase();
+                            }
+                        }
+
+                        return outputWord;
+                    }
+                }];
+            var output = [];
+            var deviationSum = 0;
+            for (var i = start; i < end; i++) {
+                if (string[i] == '<' && i < (string.length - 1)) {
+                    var tagType = string[i + 1] == '/' ? 'closing' : 'opening';
+                    var tagIndex = -1;
+                    for (var tagI = 0; tagI < tags.length; tagI++) {
+                        var fullMatch = true;
+                        var maxLength = (tags[tagI][tagType].length + i) <= (string.length - 1) ? tags[tagI][tagType].length : ((string.length - 1) - i);
+                        for (var charI = 0; charI < maxLength; charI++) {
+                            if (string[i + charI] != tags[tagI][tagType][charI]) {
+                                fullMatch = false;
+                                break;
+                            }
+                        }
+                        if (fullMatch == true) {
+                            tagIndex = tagI;
+                            break;
+                        }
+                    }
+                    if (tagType == 'opening' && tagIndex != -1) {
+                        closingQuee.push(tags[tagIndex][tagType == 'opening' ? 'closing' : 'opening']);
+                        var result = parseString(string, i + tags[tagIndex][tagType].length, null, closingQuee);
+                        output.push(tags[tagIndex].action(result.text));
+                        deviationSum += result.parsedTagLength + 1;
+                        i += new String(result.text).length + result.parsedTagLength;
+                    }
+                    else if (tagType == 'closing' && tagIndex != -1 && closingQuee.length > 0 && closingQuee[closingQuee.length - 1] == tags[tagIndex][tagType]) {
+                        var tagLength = closingQuee.pop().length;
+                        return { text: output.join(''), parsedTagLength: (((tagLength * 2) - 2) + deviationSum) };
+                    }
+                }
+                else {
+                    output.push(string[i]);
+                }
+            }
+            return output.join('');
+        }
+        var testStr = "We are <mixcase>living</mixcase> in a <upcase>yellow submarine</upcase>. We <mixcase>don't</mixcase> have <lowcase>anything</lowcase> else.";
+        var testStr2 = "<upcase><mixcase>yellow submarine</mixcase></upcase>.";
+        var testStr3 = "<z><w>yellow</w></z>.";
+        var testStr4 = "<upcase><mixcase><z><w>yellow</w></z></mixcase></upcase>.";
+        jsConsole.writeLine(parseString(testStr));
+    </script>
+</body>
+</html>

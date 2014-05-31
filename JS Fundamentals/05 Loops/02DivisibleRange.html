@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Divisible numbers in range</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type the first number:</label><input type="text" id="input-number" />
+    <input type="button" value="Show result!" onclick="print()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that prints all the numbers from 1 to N, that are not divisible by 3 and 7 at the same time");
+        function print() {
+            var inputNumber = jsConsole.readInteger("#input-number");
+            var result = "Not divisible by 3 and 7: ";
+            var isFirst = true;
+            for (var i = 0; i < inputNumber; i++) {
+                if (i % 21) {
+                    if (!isFirst) {
+                        result += ",";
+                    }
+                    result += i;
+                    isFirst = false;
+                }
+            }
+            jsConsole.writeLine(result);
+        }
+    </script>
+</body>
+</html>

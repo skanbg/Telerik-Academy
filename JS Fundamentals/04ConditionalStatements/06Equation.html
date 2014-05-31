@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Quadratic equation</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-a">a:</label><input type="text" id="input-a" />
+    <label for="input-b">b:</label><input type="text" id="input-b" />
+    <label for="input-c">c:</label><input type="text" id="input-c" />
+    <input type="button" value="Show result!" onclick="solve()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that enters the coefficients a, b and c of a quadratic equation a*x2 + b*x + c = 0 and calculates and prints its real roots. Note that quadratic equations may have 0, 1 or 2 real roots.");
+        function solve() {
+            var inputA = jsConsole.readInteger("#input-a") ? jsConsole.readInteger("#input-a") : 1;
+            var inputB = jsConsole.readInteger("#input-b") ? jsConsole.readInteger("#input-b") : 1;
+            var inputC = jsConsole.readInteger("#input-c") ? jsConsole.readInteger("#input-c") : 1;
+
+            var discriminant = inputB * inputB - 4 * inputA * inputC;
+            if (discriminant < 0) {
+                jsConsole.writeLine("No real roots");
+            }
+            else if (discriminant == 0) {
+                var root = (inputB * (-1)) / (2 * inputA);
+                jsConsole.writeLine("One real root: " + root);
+            }
+            else if (discriminant > 0) {
+                var firstRoot = (-inputB + Math.sqrt(discriminant)) / (2 * inputA);
+                var secondRoot = (-inputB - Math.sqrt(discriminant)) / (2 * inputA);
+                jsConsole.writeLine("First root: " + firstRoot + "; second root: " + secondRoot);
+            }
+        }
+    </script>
+</body>
+</html>

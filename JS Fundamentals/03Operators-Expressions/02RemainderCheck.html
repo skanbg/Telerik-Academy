@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Remainder Check</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type a number:</label><input type="text" id="input-number" /><input type="button" value="Show result!" onclick="remainderCheck()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a boolean expression that checks for given integer if it can be divided (without remainder) by 7 and 5 in the same time.");
+        function remainderCheck() {
+            var number = jsConsole.readInteger("#input-number");
+            var result = (number % 7 == 0 && number % 5 == 0) ? " is " : " is not ";
+            //var result = (number % 35 == 0) ? " is " : " is not ";
+
+            jsConsole.writeLine(number + result + "devidable without remainder to 5 and 7(or just 35) at the same time.");
+        }
+    </script>
+</body>
+</html>

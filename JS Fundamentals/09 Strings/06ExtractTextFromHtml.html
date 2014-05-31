@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Extract text</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a function that extracts the content of a html page given as text. The function should return anything that is in a tag, without the tags</br>===============================================');
+
+        function parseString(string) {
+            string = new String(string);
+            var isItTag = false;
+            var output = [];
+            var buffer = [];
+            for (var i = 0; i < string.length; i++) {
+                if (string[i] == '<') {
+                    isItTag = true;
+                } else if (isItTag && string[i] == '>') {
+                    isItTag = false;
+                } else if (isItTag) {
+                    buffer.push(string[i]);
+                } else {
+                    output.push(string[i]);
+                }
+            }
+            if (isItTag) {
+                output.push(buffer.join(''));
+            }
+            return output.join('');
+        }
+        var testStr = "<html><head><title>Sample site</title></head><body><div>text<div>more text</div>and more...</div>in body</body></html>";
+        jsConsole.writeLine(parseString(testStr));
+    </script>
+</body>
+</html>

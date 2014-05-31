@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Email</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a function for extracting all email addresses from given text. All substrings that match the format <identifier>@<host>…<domain> should be recognized as emails. Return the emails as array of strings.</br>===============================================');
+
+        function extractEmail(text) {
+            var matches = text.match(/\b([a-zA-Z0-9\-_\.\+])+@([a-zA-Z0-9\-.]+\.[a-zA-Z]{2,4}\b)/g);  //Added "/g" at the end to replace all repeats, not the first one
+            return matches;
+        }
+
+        var testStr = 'My new email adress is pattysog-291@yopmail.com Its email from yopmail.com Add me @ my personal email: nico.howard-dyoufrg@yopmail.com 8956328965-bksdbkdv53sb56sg43@sdvsdjl.bjklsdbjkadfbjkd.com and TheHumorousunknown@gmail.com and TheRightfulunknown@gmail.com and TheElatedunknown@gmail.com';
+        var matches = extractEmail(testStr);
+        for (var i = 0; i < matches.length; i++) {
+            jsConsole.writeLine(matches[i]);
+        }
+    </script>
+</body>
+</html>

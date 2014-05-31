@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        Template
+    </title>
+</head>
+<body>
+    <p>
+        Write a function that creates a HTML UL using a template for every HTML LI. The source of the list should an array of elements. Replace all placeholders marked with –{…}–   with the value of the corresponding property of the object.
+    </p>
+    <hr />
+    <div data-type="template" id="list-item">
+        <strong>-{name}-</strong> <span>-{age}-</span>
+    </div>
+    <script>
+        function generateList(people, template) {
+            var output = [];
+            var pattern = [];
+            var buffer = [];
+            //Discovering the pattern
+            for (var i = 0; i < template.length; i++) {
+                if (template[i] == '}' && buffer.length > 0) {
+                    buffer.shift();
+                    pattern.push({ objectName: buffer.join('') });
+                    buffer = [];
+                } else if (template[i] == '{' || buffer.length > 0) {
+                    buffer.push(template[i]);
+                }
+                else {
+                    if (pattern.length == 0 || !(pattern[pattern.length - 1] instanceof Array)) {
+                        pattern.push(template[i]);
+                    }
+                    else {
+                        pattern[pattern.length - 1] += template[i];
+                    }
+                }
+            }
+
+            output.push('<ul>');
+            for (var i = 0; i < people.length; i++) {
+                output.push('<li>');
+                for (var p = 0; p < pattern.length; p++) {
+                    if (typeof pattern[p] == 'string' || pattern[p] instanceof String) {
+                        output.push(pattern[p]);
+                    } else {
+                        output.push(people[i][pattern[p].objectName]);
+                    }
+                }
+                output.push('</li>');
+            }
+            output.push('</ul>');
+
+            return output.join('');
+        }
+        var people = [
+            { name: "Name1", age: 10 },
+            { name: "Name2", age: 20 },
+            { name: "Name3", age: 30 },
+            { name: "Name4", age: 40 },
+            { name: "Name5", age: 50 }
+        ];
+        var divSelection = document.getElementById("list-item");
+        var template = divSelection.innerHTML;
+        var peopleList = generateList(people, template);
+        divSelection.innerHTML = peopleList;
+    </script>
+</body>
+</html>

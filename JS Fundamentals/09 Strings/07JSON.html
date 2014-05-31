@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a script that parses an URL address given in the format:</br>[protocol]://[server]/[resource]</br>and extracts from it the [protocol], [server] and [resource] elements. Return the elements in a JSON object.</br>===============================================');
+
+        function jsonParse(string) {
+            string = new String(string);
+            var output = {
+                protocol: '',
+                server: '',
+                resource: ''
+            };
+            var tokens = string.split('://')
+            if (tokens.length != 2) {
+                return null;
+            }
+            output.protocol = tokens[0];
+            tokens = tokens[1].split('/');
+            output.server = tokens.shift();
+            output.resource = '/' + tokens.join('/');
+            return output;
+        }
+
+        var jsonOut = jsonParse('http://www.devbg.org/forum/index.php');
+        jsConsole.writeLine(jsonOut.protocol);
+        jsConsole.writeLine(jsonOut.server);
+        jsConsole.writeLine(jsonOut.resource);
+    </script>
+</body>
+</html>

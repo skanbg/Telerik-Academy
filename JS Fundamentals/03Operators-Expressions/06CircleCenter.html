@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Point Within A Circle</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="radius">Circle radius:</label><input type="text" id="radius" />
+    <label for="pointX">Point X:</label><input type="text" id="pointX" />
+    <label for="pointY">Point Y:</label><input type="text" id="pointY" />
+    <input type="button" value="Show result!" onclick="pointCheck()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write an expression that checks if given print (x,  y) is within a circle K(O, 5) - So the center of the circle is x=0,y=5.");
+        function pointCheck() {
+            var radius = jsConsole.readInteger("#radius");
+            var x = jsConsole.readInteger("#pointX");
+            var y = jsConsole.readInteger("#pointY");
+            var result = (Math.pow((x - 0), 2) + Math.pow((y - 5), 2) < Math.pow(radius, 2)) ? "is" : "is not";
+            jsConsole.writeLine("Point ("+x+","+y+") "+result+" within the circle (0,5) and radius "+radius);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        Placeholders
+    </title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a function that formats a string using placeholders:</br>var str = stringFormat("Hello {0}!","Peter");</br>The function should work with up to 30 placeholders and all types</br>===============================================');
+        function stringFormat(text) {
+            text = new String(text);
+            var splitted = [];
+            var buffer = [];
+            for (var i = 0; i < text.length; i++) {
+                if (text[i] == '}' && buffer.length > 0) {
+                    buffer.shift();
+                    splitted.push(arguments[parseInt(buffer.join(''))+1]);
+                    buffer = [];
+                    //splitted.push({index:parseInt(buffer.join())});
+                } else if (text[i] == '{' || buffer.length > 0) {
+                    buffer.push(text[i]);
+                }
+                else {
+                    splitted.push(text[i]);
+                }
+            }
+
+            if (buffer.length > 0) {
+                splitted.push(buffer.join(''));
+            }
+
+            return splitted.join('');
+        }
+
+        var format = "{0}, {1}, {0} text {2}";
+        var str = stringFormat(format, 1, "Pesho", "Gosho");
+        jsConsole.writeLine(str);
+    </script>
+</body>
+</html>

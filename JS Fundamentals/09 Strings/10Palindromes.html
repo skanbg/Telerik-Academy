@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+        Palindromes
+    </title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".</br>===============================================');
+
+        function reverseString(string) {
+            return string.split('').reverse().join('');
+        }
+
+        function extractPal(text) {
+            var words = text.split(' ');
+            var output = [];
+            for (var i = 0; i < words.length; i++) {
+                if (words[i].length > 1 && words[i] == reverseString(words[i])) {
+                    output.push(words[i]);
+                }
+            }
+            return output;
+        }
+
+        var testStr = 'Write a program that extracts from a given text all palindromes, e.g. "ABBA" , "lamal" , "exe" .';
+        var matches = extractPal(testStr);
+        for (var i = 0; i < matches.length; i++) {
+            jsConsole.writeLine(matches[i]);
+        }
+    </script>
+</body>
+</html>

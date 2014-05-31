@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Maximal Sequence</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that finds the maximal sequence of equal elements in an array.");
+        var array = [1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 5];
+        jsConsole.writeLine("Array content: " + array.join(", "));
+        var maxRepeatedElement;
+        var maxRepeatsCounter = 0;
+        var currentElement;
+        var currentRepeats = 0;
+        for (var i = 0; i < array.length; i++) {
+            if (currentElement != undefined && array[i] == currentElement) {
+                currentRepeats++;
+                if (currentRepeats > 1 && currentRepeats > maxRepeatsCounter) {
+                    maxRepeatedElement = currentElement;
+                    maxRepeatsCounter = currentRepeats;
+                }
+            } else {
+                currentRepeats = 1;
+                currentElement = array[i];
+            }
+        }
+        if (maxRepeatsCounter > 1) {
+            jsConsole.writeLine("Maximal sequence: " + new Array(maxRepeatsCounter + 1).join(" " + maxRepeatedElement));
+        } else {
+            jsConsole.writeLine("No repeating sequence found");
+        }
+    </script>
+</body>
+</html>

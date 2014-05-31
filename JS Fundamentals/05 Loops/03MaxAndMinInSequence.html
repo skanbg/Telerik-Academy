@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Max and Min in sequence</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type the sequence separated with ',' </label><input type="text" id="input-number" />
+    <input type="button" value="Show result!" onclick="print()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that finds the max and min number from a sequence of numbers. Separate with ,");
+        function print() {
+            var inputNumber = jsConsole.read("#input-number");
+            var numbers = inputNumber.split(",");
+            var max = null;
+            var min = null;
+            for (var i = 0; i < numbers.length; i++) {
+                var parsedNum = parseInt(numbers[i]);
+                if (!isNaN(parsedNum)) {
+                    if (max == null || parsedNum > max) {
+                        max = parsedNum;
+                    }
+                    if (min == null || parsedNum < min) {
+                        min = parsedNum;
+                    }
+                }
+            }
+            if (max == null || min == null) {
+                jsConsole.writeLine("Numbers not found in the input string!");
+            }
+            else {
+                jsConsole.writeLine("Min: " + min + "; Max: " + max);
+            }
+        }
+    </script>
+</body>
+</html>

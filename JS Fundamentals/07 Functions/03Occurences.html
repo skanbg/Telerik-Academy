@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Occurences</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="input">Type text here</textarea>
+    <input type="text" id="word" value="Type a word" /><a href="#" onclick="print()">Result!</a>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a function that finds all the occurrences of word in a text");
+        jsConsole.writeLine("The search can case sensitive or case insensitive");
+        jsConsole.writeLine("Use function overloading");
+        function print() {
+            var text = document.getElementById("input").value;// jsConsole.read("#input");
+            var word = jsConsole.read("#word");
+            var tokens = text.split(" ");
+            var occ = 0;
+            for (var i = 0; i < tokens.length; i++) {
+                if (tokens[i] == word) {
+                    occ++;
+                }
+            }
+            jsConsole.writeLine("Word "+word+" is repeated "+occ+" times");
+        }
+    </script>
+</body>
+
+</html>

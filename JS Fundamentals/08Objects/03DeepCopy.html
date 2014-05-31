@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Deep Copy</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a function that makes a deep copy of an object");
+        jsConsole.writeLine("The function should work for both primitive and reference types");
+        jsConsole.writeLine("========================");
+        function deepCopy(origin) {
+            var primitive = ['number', 'string', 'boolean', 'null', 'undefined'];
+            if (primitive.indexOf(typeof (origin)) >= 0) {
+                return origin;
+            }
+            var output = {};
+            if (origin instanceof Array) {
+                output = [];
+            }
+            for (var prop in origin) {
+                if (origin.hasOwnProperty(prop)) {
+                    output[prop] = deepCopy(origin[prop]);
+                }
+            }
+            return output;
+        }
+        var number = 5;
+        var numberCopy = deepCopy(number);
+        jsConsole.writeLine("Number value before change: " + number);
+        numberCopy = 10;
+        jsConsole.writeLine("Number value after change: " + number);
+
+        var object = { name: "Ninja", type: "master", years: 1, skills: ["programming", "eating"], toString: function () { return "Name: " + this.name + " | Type: " + this.type + " | Year: " + this.years + " | Skills: " + this.skills.join(", ") } };
+        var objectCopy = deepCopy(object);
+        jsConsole.writeLine("Object before change:</br>" + object);
+        objectCopy.name = "Mandja";
+        objectCopy.type = "unknown";
+        objectCopy.years = 3;
+        objectCopy.skills.push("sleeping");
+        jsConsole.writeLine("Object after change:</br>" + object);
+    </script>
+</body>
+</html>

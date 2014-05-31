@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Elements grouping</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a function that groups an array of persons by age, first or last name. The function must return an associative array, with keys - the groups, and values -arrays with persons in this groups");
+        function group(array, property) {
+            var outputArray = {};
+            for (var i = 0; i < array.length; i++) {
+                if (outputArray[array[i][property]] === undefined) {
+                    outputArray[array[i][property]] = {};
+                    for (var prop in array[i]) {
+                        if (prop != property) {
+                            outputArray[array[i][property]][prop] = [];
+                            outputArray[array[i][property]][prop].push(array[i][prop]);
+                        }
+                    }
+                } else {
+                    for (var prop in array[i]) {
+                        if (prop != property) {
+                            outputArray[array[i][property]][prop].push(array[i][prop]);
+                        }
+                    }
+                }
+            }
+            return outputArray;
+        }
+        var persons = [
+            { firstname: "Gosho", lastname: "Petrov", age: 32 },
+            { firstname: "Bay", lastname: "Ivan", age: 2 },
+            { firstname: "Gosho", lastname: "Petrov", age: 81 },
+            { firstname: "Bay", lastname: "Ivan", age: 2 },
+            { firstname: "Gosho", lastname: "Petrov", age: 5 }];
+        var groupingResult = group(persons, "firstname"); //Debug with firebug to check this variable content
+    </script>
+</body>
+</html>

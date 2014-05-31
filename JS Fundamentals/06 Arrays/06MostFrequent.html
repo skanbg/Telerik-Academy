@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Most Frequent</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        function mostFrequent(array) {
+            var outputArray = [];
+            var repeats = 1;
+            for (var i = 1; i < array.length; i++) {
+                if (array[i] == array[0]) {
+                    repeats++;
+                }
+                else {
+                    outputArray.push(array[i]);
+                }
+            }
+            var mostObject;
+            if (outputArray.length > repeats && outputArray.length > 1) {
+                mostObject = mostFrequent(outputArray);
+                if (mostObject.rep < repeats) {
+                    mostObject = { rep: repeats, number: array[0] };
+                }
+            }
+            return mostObject ? mostObject : mostObject = { rep: repeats, number: array[0] };
+        }
+        jsConsole.writeLine("Write a program that finds the most frequent number in an array.");
+        //var array = [2, 1, 4, 3, 1, 2, 5, 1, 7];
+        var array = [4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3];
+        //var array = [1, 2, 3, 1];
+        //var array = [2, 1, 4, 3];
+        jsConsole.writeLine("Array content: " + array.join(", "));
+
+        var result = mostFrequent(array);
+        if (result.rep > 1) {
+            jsConsole.writeLine("Most frequent numbers is: " + result.number + " and is repeated " + result.rep + " times");
+        }
+        else {
+            jsConsole.writeLine("No repeating numbers");
+        }
+    </script>
+</body>
+</html>

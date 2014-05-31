@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Selection Sort</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        function selectionSort(array, index) {
+            var buffer;
+            for (var i = index + 1; i < array.length; i++) {
+                if (array[index] > array[i]) {
+                    buffer = array[index];
+                    array[index] = array[i];
+                    array[i] = buffer;
+                }
+            }
+            if (index < array.length - 1) {
+                selectionSort(array, index + 1);
+            }
+        }
+        jsConsole.writeLine("Sorting an array means to arrange its elements in increasing order. Write a script to sort an array. Use the \"selection sort\" algorithm: Find the smallest element, move it at the first position, find the smallest from the rest, move it at the second position,");
+        var array = [2, 1, 4, 3];
+        jsConsole.writeLine("Array content: " + array.join(", "));
+
+        selectionSort(array, 0);
+        jsConsole.writeLine("Array content after selection sort: " + array.join(", "));
+    </script>
+</body>
+</html>

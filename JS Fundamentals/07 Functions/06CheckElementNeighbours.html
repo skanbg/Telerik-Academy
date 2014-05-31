@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Neighbours</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="text" id="input" /><input type="button" onclick="checkNeghbours()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a function that checks if the element at given position in given array of integers is bigger than its two neighbors (when such exist).");
+        var array = [];
+        for (var i = 0; i < 20; i++) {
+            array.push(Math.floor(Math.random() * 10000));
+        }
+        jsConsole.writeLine("Array content(refresh page for new array): " + array.join(", "));
+        function checkNeghbours() {
+            var input = jsConsole.readInteger("#input");
+            var left = (input < 1) ? 0 : ((input > array.length - 1) ? array.length - 1 : (input - 1));
+            var right = (input >= array.length - 1) ? array.length - 1 : ((input < 0) ? 0 : input + 1);
+            if ((input === left || array[input] > array[left]) && (input === right || array[input] > array[right])) {
+                jsConsole.writeLine("Its bigger than neighbours");
+            }
+            else {
+                jsConsole.writeLine("Its not bigger than its neighbours");
+            }
+        }
+    </script>
+</body>
+
+</html>

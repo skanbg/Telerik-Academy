@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Show the digit name</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type the first number:</label><input type="text" id="input-number" />
+    <input type="button" value="Show result!" onclick="sayTheName()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write script that asks for a digit and depending on the input shows the name of that digit (in English) using a switch statement.");
+        function sayTheName() {
+            var inputNumber = jsConsole.readInteger("#input-number");
+            var result;
+            switch (inputNumber) {
+                case 0:
+                    result = "zero";
+                    break;
+                case 1:
+                    result = "one";
+                    break;
+                case 2:
+                    result = "two";
+                    break;
+                case 3:
+                    result = "three";
+                    break;
+                case 4:
+                    result = "four";
+                    break;
+                case 5:
+                    result = "five";
+                    break;
+                case 6:
+                    result = "six";
+                    break;
+                case 7:
+                    result = "seven";
+                    break;
+                case 8:
+                    result = "eight";
+                    break;
+                case 9:
+                    result = "nine";
+                    break;
+                default:
+                    result = "unrecognised";
+                    break;
+            }
+            jsConsole.writeLine(inputNumber + " - " + result);
+        }
+    </script>
+</body>
+</html>

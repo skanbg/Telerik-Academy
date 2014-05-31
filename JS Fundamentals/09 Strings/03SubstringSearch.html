@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Substring check</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a JavaScript function that finds how many times a substring is contained in a given text (perform case insensitive search).</br></br>===============================================');
+        var testStr = "We are living in an yellow submarine. We don't have anything else. Inside the submarine is very tight. So we are drinking all the day. We will move out of it in 5 days.";
+        function checkSubstring(string, substring) {
+            var counter = 0;
+            for (var i = 0; i < string.length - substring.length; i++) {
+                for (var p = 0; p < substring.length; p++) {
+                    if (string[i + p].toLowerCase() != substring[p].toLowerCase()) {
+                        break;
+                    }
+                    else if (string[i + p].toLowerCase() == substring[p].toLowerCase() && p == (substring.length - 1)) {
+                        counter++;
+                        //i += substring.length - 1;
+                    }
+                }
+            }
+            return counter;
+        }
+
+        jsConsole.writeLine("Substring found in text " + checkSubstring(testStr, 'in') + " times");
+    </script>
+</body>
+</html>

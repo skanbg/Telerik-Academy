@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Check if is bigger than neighbours</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a Function that returns the index of the first element in array that is bigger than its neighbors, or -1, if there’s no such element.");
+        var array = [];
+        for (var i = 0; i < 5; i++) {
+            array.push(Math.floor(Math.random() * 10000));
+        }
+        jsConsole.writeLine("Array content(refresh page for new array): " + array.join(", "));
+
+        function getIndex(arr) {
+            for (var i = 1; i < arr.length - 1; i++) {
+                if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        jsConsole.writeLine("Found on index: " + getIndex(array));
+    </script>
+</body>
+
+</html>

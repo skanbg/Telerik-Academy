@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Greatest num</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number1">Please type the first number:</label><input type="text" id="input-number1" />
+    <label for="input-number2">Please type the second number:</label><input type="text" id="input-number2" />
+    <label for="input-number3">Please type the second number:</label><input type="text" id="input-number3" />
+    <input type="button" value="Show result!" onclick="sort()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that finds the greatest of given 5 variables.");
+        function sort() {
+            var firstNumber = jsConsole.readInteger("#input-number1");
+            var secondNumber = jsConsole.readInteger("#input-number2");
+            var thirdNumber = jsConsole.readInteger("#input-number3");
+            var fourthNumber = jsConsole.readInteger("#input-number4");
+            var fifthNumber = jsConsole.readInteger("#input-number5");
+
+            function checker(num1, num2) {
+                if (num1 > num2) {
+                    return num1;
+                }
+                return num2;
+            }
+
+            var greatestNumber = checker(firstNumber, Number.MIN_VALUE);
+            greatestNumber = checker(greatestNumber, secondNumber);
+            greatestNumber = checker(greatestNumber, thirdNumber);
+            greatestNumber = checker(greatestNumber, fourthNumber);
+            greatestNumber = checker(greatestNumber, fifthNumber);
+            jsConsole.writeLine("The greatest number is: " + greatestNumber);
+        }
+    </script>
+</body>
+</html>

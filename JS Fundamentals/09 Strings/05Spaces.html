@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Replace spaces</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a function that replaces non breaking white-spaces in a text with &nbsp;</br>===============================================');
+
+        function replaceSpaces(string) {
+            string = new String(string);
+            var output = [];
+            for (var i = 0; i < string.length; i++) {
+                if (string[i] == ' ') {
+                    output.push('&nbsp;');
+                } else {
+                    output.push(string[i]);
+                }
+            }
+            return output.join('');
+        }
+        jsConsole.writeLine(replaceSpaces('  a  s d   g'));
+    </script>
+</body>
+</html>

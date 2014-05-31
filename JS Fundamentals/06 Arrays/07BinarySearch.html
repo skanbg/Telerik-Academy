@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Binary Search</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        function binarySearch(array, searchedNum, lowBound, highBound) {
+            lowBound = (typeof (lowBound) === 'undefined') ? 0 : lowBound;
+            highBound = (typeof (highBound) === 'undefined') ? array.length : highBound;
+            var middle = Math.floor((lowBound + highBound) / 2);
+            if (lowBound > highBound) {
+                return -1;
+            } else if (array[middle] == searchedNum) {
+                return middle;
+            } else if (array[middle] < searchedNum) {
+                return binarySearch(array, searchedNum, middle + 1, highBound);
+            }
+            else if (array[middle] > searchedNum) {
+                return binarySearch(array, searchedNum, lowBound, middle - 1);
+            }
+        }
+        var array = [];
+        for (var i = 0; i < 20; i++) {
+            array[i] = i * 2;
+        }
+        jsConsole.writeLine("Array content: " + array.join(", "));
+        var searchedNum = 30;
+        jsConsole.writeLine("Searched number: " + searchedNum);
+        var result = binarySearch(array, searchedNum);
+        if (result < 0) {
+            jsConsole.writeLine("Number not found in the array");
+        } else {
+            jsConsole.writeLine("Number " + searchedNum + " found on index " + result);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Show the number as string</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type the first number:</label><input type="text" id="input-number" />
+    <input type="button" value="Show result!" onclick="sayTheName()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that converts a number in the range [0...999] to a text corresponding to its English pronunciation. Examples:");
+        jsConsole.writeLine("0  \"Zero\"");
+        jsConsole.writeLine("273  \"Two hundred seventy three\"");
+        jsConsole.writeLine("400  \"Four hundred\"");
+        jsConsole.writeLine("501  \"Five hundred and one\"");
+        jsConsole.writeLine("711  \"Seven hundred and eleven\"");
+        function sayTheName() {
+            var inputNumber = jsConsole.readInteger("#input-number");
+            var ZeroToTwelveNumbersToTextArray = ["Zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twelve"];
+            var DecimalNumbersToTextArray = ["", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+            if (inputNumber <= 20) {
+                //if its smaller than 20 we get it directly from the array as its index
+                jsConsole.writeLine(ZeroToTwelveNumbersToTextArray[inputNumber]);
+            }
+            else if (inputNumber > 20 && inputNumber < 100) {
+                //if its bigger than 20 and smaller than 100 we get the dec by deviding to 10 and checking for text in array
+                //same for the last using %
+                var getDec = Math.floor((inputNumber / 10)) - 3;
+                var getLast = inputNumber % 10;
+                jsConsole.write(DecimalNumbersToTextArray[getDec]);
+                if (getLast != 0) {
+                    jsConsole.write(" " + ZeroToTwelveNumbersToTextArray[getLast]);
+                }
+                jsConsole.writeLine("");
+            }
+            else if (inputNumber > 99 && inputNumber < 1000) {
+                //same as the above codes, but here we check the numbers hundreds by deviding to 100 and checking in the array with the numbers from 0 to 20
+                var getHundreds = Math.floor(inputNumber / 100);
+                var getDec = Math.floor((inputNumber % 100) / 10);
+                var getLast = Math.floor((inputNumber % 100) % 10);
+
+                jsConsole.write(ZeroToTwelveNumbersToTextArray[getHundreds] + " hundred");
+
+                if (getDec == 1) {
+                    jsConsole.writeLine(" and " + ZeroToTwelveNumbersToTextArray[inputNumber % 100]);
+                }
+                else if (getDec >= 0) {
+                    if (getDec > 1) {
+                        jsConsole.write(" and " + DecimalNumbersToTextArray[getDec]);
+                    }
+
+                    if (getLast != 0) {
+                        if (getDec <= 0) {
+                            jsConsole.write(" and");
+                        }
+                        jsConsole.writeLine(" " + ZeroToTwelveNumbersToTextArray[getLast]);
+                    }
+                    else {
+                        jsConsole.writeLine(" ");
+                    }
+                }
+            }
+            else {
+                jsConsole.writeLine("Number not in range!");
+            }
+        }
+    </script>
+</body>
+</html>

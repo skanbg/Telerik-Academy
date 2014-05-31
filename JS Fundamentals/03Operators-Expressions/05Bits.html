@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Remainder Check</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type a number:</label><input type="text" id="input-number" /><input type="button" value="Show result!" onclick="bitCheck()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a boolean expression for finding if the bit 3 (counting from 0) of a given integer is 1 or 0.");
+        function bitCheck() {
+            var number = jsConsole.readInteger("#input-number");
+            var floatedNumber = number >> 3;
+            var clearLastBit = (floatedNumber >> 1) << 1;
+            var result = (floatedNumber == clearLastBit) ? "0" : "1";
+            //Alternative:
+            //var mask = 1 << 3;
+            //var merge = number & mask;
+            //var result = merge >> 3;
+            jsConsole.writeLine("The third bit of "+number+" is "+result);
+        }
+    </script>
+</body>
+</html>

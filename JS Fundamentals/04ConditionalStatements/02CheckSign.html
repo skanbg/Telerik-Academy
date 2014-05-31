@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Check product sign</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number1">Please type the first number:</label><input type="text" id="input-number1" />
+    <label for="input-number2">Please type the second number:</label><input type="text" id="input-number2" />
+    <label for="input-number3">Please type the second number:</label><input type="text" id="input-number3" />
+    <input type="button" value="Show result!" onclick="productSign()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a script that shows the sign (+ or -) of the product of three real numbers without calculating it. Use a sequence of if statements.");
+        function productSign() {
+            function checkSign(value, sign) {
+                if (value < 0 && sign == "+") {
+                    return "-";
+                }
+                else if (value > 0 && sign == "-") {
+                    return "-";
+                }
+                return "+";
+            }
+            var firstNumber = jsConsole.readInteger("#input-number1");
+            var secondNumber = jsConsole.readInteger("#input-number2");
+            var thirdNumber = jsConsole.readInteger("#input-number3");
+
+            var result = checkSign(firstNumber, "+");
+            result = checkSign(secondNumber, result);
+            result = checkSign(thirdNumber, result);
+            jsConsole.writeLine("The product sign of numbers: " + firstNumber + ", " + secondNumber + ", " + thirdNumber + " is \"" + result + "\".");
+        }
+    </script>
+</body>
+</html>

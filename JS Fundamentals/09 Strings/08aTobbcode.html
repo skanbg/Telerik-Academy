@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine('Write a script that parses an URL address given in the format:</br>[protocol]://[server]/[resource]</br>and extracts from it the [protocol], [server] and [resource] elements. Return the elements in a JSON object.</br>===============================================');
+
+        function replaceTag(htmlCode) {
+            var replacedTags = htmlCode.replace(/<a href=\"([^\"]*)\">(.*?)<\/a>/g, "[URL=$1]$2[/URL]");  //Added "/g" at the end to replace all repeats, not the first one
+            return replacedTags;
+        }
+
+        var testStr = '<p>Please visit <a href="http://academy.telerik. com">our site</a> to choose a training course. Also visit <a href="www.devbg.org">our forum</a> to discuss the courses.</p>';
+        jsConsole.writeLine(replaceTag(testStr));
+    </script>
+</body>
+</html>

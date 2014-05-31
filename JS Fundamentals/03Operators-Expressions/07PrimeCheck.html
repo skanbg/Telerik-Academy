@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Prime Checker</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type a number:</label><input type="text" id="input-number" /><input type="button" value="Show result!" onclick="primeCheck()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write an expression that checks if given positive integer number n (n ≤ 100) is prime. E.g. 37 is prime.");
+        function primeCheck() {
+            var number = jsConsole.readInteger("#input-number");
+            var result = "is";
+            for (var i = 2; i < Math.sqrt(number) ; i++) {
+                if (number % i == 0 && i != number) {
+                    jsConsole.writeLine(number + " is not prime.");
+                    return;
+                }
+            }
+            jsConsole.writeLine(number + " is prime.");
+        }
+    </script>
+</body>
+</html>

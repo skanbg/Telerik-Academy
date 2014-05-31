@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Repeats</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write a function that counts how many times given number appears in given array. Write a test function to check if the function is working correctly.");
+        function generateTest() {
+            function randomIntFromInterval(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+            var testNumber = randomIntFromInterval(0, 10);
+            var outputArray = [];
+            var repeats = 0;
+            for (var i = 0; i < 20; i++) {
+                outputArray.push(randomIntFromInterval(0, 10));
+                if (outputArray[i] == testNumber) {
+                    repeats++;
+                }
+            }
+            return { array: outputArray, number: testNumber, repeats: repeats };
+        }
+
+        function findRepeats(array, number) {
+            var count = 0;
+            for (var i = 0; i < array.length; i++) {
+                if (array[i] == number) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        var generatedTest = generateTest();
+        var functionOutput = findRepeats(generatedTest.array, generatedTest.number);
+        jsConsole.writeLine("Function is " + ((functionOutput == generatedTest.repeats) ? "working(Generated test equals the function output)" : "not working(Generated test and function output missmatch)"));
+    </script>
+</body>
+
+</html>

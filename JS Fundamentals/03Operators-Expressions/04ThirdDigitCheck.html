@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Remainder Check</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number">Please type a number:</label><input type="text" id="input-number" /><input type="button" value="Show result!" onclick="thirdDigitCheck()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Write an expression that checks for given integer if its third digit (right-to-left) is 7. E. g. 1732  true.");
+        function thirdDigitCheck() {
+            var number = jsConsole.readInteger("#input-number");
+            var result = Math.floor((number/100))%10;
+
+            jsConsole.writeLine("The third digit of number "+number+" is "+result+".");
+        }
+    </script>
+</body>
+</html>

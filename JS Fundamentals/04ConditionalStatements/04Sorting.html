@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sort numbers descending</title>
+    <link href="jsConsole/styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="input-number1">Please type the first number:</label><input type="text" id="input-number1" />
+    <label for="input-number2">Please type the second number:</label><input type="text" id="input-number2" />
+    <label for="input-number3">Please type the second number:</label><input type="text" id="input-number3" />
+    <input type="button" value="Show result!" onclick="sort()" />
+    <div id="js-console"></div>
+    <script src="jsConsole/scripts/js-console.js"></script>
+    <script>
+        jsConsole.writeLine("Sort 3 real values in descending order using nested if statements.");
+        function sort() {
+            var firstNumber = jsConsole.readInteger("#input-number1");
+            var secondNumber = jsConsole.readInteger("#input-number2");
+            var thirdNumber = jsConsole.readInteger("#input-number3");
+
+            var tempNumber = 0;
+
+            if (secondNumber > firstNumber) {
+                tempNumber = firstNumber;
+                firstNumber = secondNumber;
+                secondNumber = tempNumber;
+                if (thirdNumber > secondNumber) {
+                    tempNumber = thirdNumber;
+                    thirdNumber = secondNumber;
+                    secondNumber = tempNumber;
+                }
+                if (secondNumber > firstNumber) {
+                    tempNumber = firstNumber;
+                    firstNumber = secondNumber;
+                    secondNumber = tempNumber;
+                }
+            }
+            if (thirdNumber > secondNumber) {
+                tempNumber = thirdNumber;
+                thirdNumber = secondNumber;
+                secondNumber = tempNumber;
+                if (secondNumber > firstNumber) {
+                    tempNumber = firstNumber;
+                    firstNumber = secondNumber;
+                    secondNumber = tempNumber;
+                }
+            }
+            jsConsole.writeLine("Sorted numbers: " + firstNumber + ", " + secondNumber + ", " + thirdNumber);
+        }
+    </script>
+</body>
+</html>
