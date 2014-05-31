@@ -1,0 +1,70 @@
+﻿body {
+    background-color: #000000;
+}
+
+p, div {
+    margin: 0px;
+    padding: 0px;
+}
+
+.categories-container {
+    display: inline-block;
+    background-color: #cbcbcb;
+    border-radius: 10px;
+    padding: 20px 15px 25px 15px;
+}
+
+    .categories-container > h1 {
+        margin: 0px 0px 20px 0px;
+        font-size: 1.5em;
+    }
+
+    .categories-container > div.template-block {
+        border: 1px solid #808080;
+        background-color: #ffffff;
+        padding: 20px 20px 0px 20px;
+        width: 400px;
+    }
+
+        .categories-container > div.template-block:not(:last-child) {
+            margin-bottom: 30px;
+        }
+
+        .categories-container > div.template-block > img {
+            width: 150px;
+            border: 1px solid #808080;
+            float: left;
+            margin: 0px 20px 20px 0px;
+        }
+
+        .categories-container > div.template-block button {
+            border-bottom: 2px solid #aa0000;
+            border-right: 2px solid #aa0000;
+            border-left: 2px solid #aa0000;
+            border-top: 2px solid #ef7b7b;
+            padding-left: 11px;
+            min-width: 70px;
+            height: 25px;
+            background-color: #ff0000;
+            background-image: url('../images/button-background.png');
+            background-repeat: repeat-y;
+            color: #fff;
+            float: right;
+            margin: 20px 0px 20px 0px;
+        }
+
+            .categories-container > div.template-block button:not(:last-of-type) {
+                margin-left: 10px;
+            }
+
+.clear-float {
+    zoom: 1;
+}
+
+    .clear-float:after {
+        content: " ";
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: hidden;
+    }

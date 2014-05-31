@@ -1,0 +1,34 @@
+﻿body {
+    background-color: #636363;
+    font-family: "times","times new roman";
+    font-size: 16px;
+    font-weight: bold;
+}
+
+thead th h1{
+    color: #929292;
+}
+
+.yellow-text {
+    color: #c7c827;
+}
+
+.red-text{
+    color: #ff0000;
+}
+
+.grey-text{
+    color: #929292;
+}
+
+.orange-text{
+    color: #ff6a00;
+}
+
+.light-grey-text{
+    color: #bdbbbb;
+}
+
+.online-icon:before{
+    content: url('http://opentopo.sdsc.edu/gridsphere/images/dot_green.png');
+}

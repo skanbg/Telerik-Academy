@@ -1,0 +1,14 @@
+﻿body {
+    font-family: "Edwardian Script ITC", Consolas;
+    color: #0094ff;
+}
+
+p:first-letter {
+    font-size: 3em;
+    font-family: "Edwardian Script ITC", "Brush Script MT", cursive;
+    font-style: italic;
+}
+
+p::first-line {
+    font-weight: bold;
+}

@@ -1,0 +1,23 @@
+﻿.list-menu, .list-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+    .list-menu ul {
+        margin: 0px 0px 0px 15px;
+        display: none;
+        color: #808080;
+    }
+
+    .list-menu a {
+        text-decoration: none;
+    }
+
+    .list-menu li:hover > a {
+        text-decoration: underline;
+    }
+
+    .list-menu li:hover > ul {
+        display: block;
+    }

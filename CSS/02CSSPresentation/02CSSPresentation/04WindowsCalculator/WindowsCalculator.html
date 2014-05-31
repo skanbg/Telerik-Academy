@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Windows Calculator</title>
+    <link type="text/css" href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="calculator-container">
+        <div>
+            <div id="window-title"><img src="http://www.foreigncredits.com/Images/calculator.png" alt="Calculator icon"> Calculator</div>
+            <div id="window-buttons">
+                <div id="minimize">&nbsp;</div>
+                <div id="maximize">&nbsp;</div>
+                <div id="close">&nbsp;</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div id="inner-container">
+            <div id="menu">
+                <ul>
+                    <li><a class="underline-letter">View</a></li>
+                    <li><a class="underline-letter">Edit</a></li>
+                    <li><a class="underline-letter">Help</a></li>
+                </ul>
+            </div>
+            <form method="post">
+                <div id="calculator-body">
+                    <textarea class="gradient-gray font-textarea">6454564</textarea>
+                </div>
+                <div id="bits-grid">
+                    <ul>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                    </ul>
+                    <ul>
+                        <li>63</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>47</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>32</li>
+                    </ul><ul>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                        <li>0000</li>
+                    </ul>
+                    <ul>
+                        <li>31</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>15</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                        <li>0</li>
+                    </ul>
+                </div>
+                <div id="buttons-grid">
+                    <div class="double-column">
+                        <div class="bordered height-split">
+                            <ul class="no-bullets">
+                                <li><input type="radio" />Hex</li>
+                                <li><input type="radio" />Dec</li>
+                                <li><input type="radio" />Oct</li>
+                                <li><input type="radio" />Bin</li>
+                            </ul>
+                        </div>
+                        <div class="bordered height-split">
+                            <ul class="no-bullets">
+                                <li><input type="radio" />Qword</li>
+                                <li><input type="radio" />Dword</li>
+                                <li><input type="radio" />Word</li>
+                                <li><input type="radio" />Byte</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="single-column">
+                        <input type="button" class="disabled" disabled="disabled" />
+                        <input type="button" value="(" />
+                        <input type="button" value="RoL" />
+                        <input type="button" value="Or" />
+                        <input type="button" value="Lsh" />
+                        <input type="button" value="Not" />
+                    </div>
+                    <div class="single-column">
+                        <input type="button" value="Mod" />
+                        <input type="button" value=")" />
+                        <input type="button" value="RoR" />
+                        <input type="button" value="Xor" />
+                        <input type="button" value="Rsh" />
+                        <input type="button" value="And" />
+                    </div>
+                    <div class="single-column">
+                        <input type="button" class="disabled" disabled="disabled" value="A" />
+                        <input type="button" class="disabled" disabled="disabled" value="B" />
+                        <input type="button" class="disabled" disabled="disabled" value="C" />
+                        <input type="button" class="disabled" disabled="disabled" value="D" />
+                        <input type="button" class="disabled" disabled="disabled" value="E" />
+                        <input type="button" class="disabled" disabled="disabled" value="F" />
+                    </div>
+                    <div class="double-column">
+                        <div class="reduced-height-column">
+                            <input class="fixed-dimensions disabled" disabled="disabled" value="MC" type="button" />
+                            <input class="fixed-dimensions" value="←" type="button" />
+                            <input class="fixed-dimensions" value="7" type="button" />
+                            <input class="fixed-dimensions" value="4" type="button" />
+                            <input class="fixed-dimensions" value="1" type="button" />
+                        </div>
+                        <div class="reduced-height-column">
+                            <input class="fixed-dimensions disabled" disabled="disabled" value="MR" type="button" />
+                            <input class="fixed-dimensions" value="CE" type="button" />
+                            <input class="fixed-dimensions" value="8" type="button" />
+                            <input class="fixed-dimensions" value="5" type="button" />
+                            <input class="fixed-dimensions" value="2" type="button" />
+                        </div>
+                        <input type="button" value="0"/>
+                    </div>
+                    <div class="single-column">
+                        <input type="button" class="disabled" disabled="disabled" value="MS"/>
+                        <input type="button" value="C" />
+                        <input type="button" value="9" />
+                        <input type="button" value="6" />
+                        <input type="button" value="3" />
+                        <input type="button" class="disabled" disabled="disabled" value="." />
+                    </div>
+                    <div class="single-column">
+                        <input type="button" class="disabled" disabled="disabled" value="M+" />
+                        <input type="button" value="±" />
+                        <input type="button" value="/" />
+                        <input type="button" value="*" />
+                        <input type="button" value="-" />
+                        <input type="button" value="+" />
+                    </div>
+                    <div class="single-column">
+                        <input type="button" class="disabled" disabled="disabled" value="M-" />
+                        <input type="button" class="disabled" disabled="disabled" value="√" />
+                        <input type="button" class="disabled" disabled="disabled" value="%" />
+                        <input type="button" class="disabled" disabled="disabled" value="1/x" />
+                        <input class="button-high-fix" type="button" value="=" />
+                    </div>
+                </div>
+                <div class="clear">&nbsp;</div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

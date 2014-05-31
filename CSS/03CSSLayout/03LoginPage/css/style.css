@@ -1,0 +1,86 @@
+﻿body {
+    background-color: #000000;
+}
+
+div, p, fieldset, h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.login-panel {
+    border: 1px solid #a08951;
+    border-radius: 10px;
+    display: inline-block;
+    *display: inline; /* ie6/7 hack for inline block */
+    width: 800px;
+}
+
+.login-panel-head {
+    background-color: #272727;
+    background-image: url('../images/pc.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    min-height: 60px;
+    padding: 20px 10px 0px 70px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+    .login-panel-head fieldset {
+        border: none;
+        display: inline-block;
+        *display: inline; /* ie6/7 hack for inline block */
+        zoom: 1.0;
+        float: left;
+    }
+
+    .login-panel-head legend {
+        float: left;
+        font-weight: bold;
+        font-size: 1.2em;
+        color: #fff;
+        margin-right: 10px;
+    }
+
+    .login-panel-head input:not(:last-child) {
+        margin-right: 15px;
+    }
+
+    .login-panel-head input[type=submit] {
+        border: 1px solid #fff;
+        border-radius: 10px;
+        background-color: #ff0000;
+        color: #fff;
+        padding: 2px 8px 2px 8px;
+    }
+
+.login-panel-body {
+    padding: 10px 100px 10px 10px;
+    background-color: #444444;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    color: #969696;
+}
+
+    .login-panel-body > h1 {
+        color: #f5bb00;
+    }
+
+    .login-panel-body a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+.clear-float {
+    zoom: 1;
+}
+
+    .clear-float:after {
+        content: " ";
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: hidden;
+    }
