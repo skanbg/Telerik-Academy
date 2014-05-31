@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Product table</title>
+</head>
+<style>
+    table, td, th {
+        border: 1px solid #9E9E9E;
+    }
+
+    table {
+        padding: 0px;
+        border-spacing: 0px;
+        width: 800px;
+        border-collapse: separate;
+    }
+
+    td, th {
+        padding: 5px 10px 5px 5px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #E9E5FD;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="6">Drag a column header and drop it here to group by that column</th>
+            </tr>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Unit price</th>
+                <th>Quantity per unit</th>
+                <th>Units in stock</th>
+                <th>Discontinued</th>
+            </tr>
+            <tr>
+                <th><input type="text" size="2" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" size="6" /><img src="http://www.prikachi.com/images/123/6952123v.jpg" width="20px" style="border:none;" /></th>
+                <th><input type="text" /></th>
+                <th><input type="text" size="6" /><img src="http://www.prikachi.com/images/123/6952123v.jpg" width="20px" style="border:none;" /></th>
+                <th><input type="checkbox"><img src="http://www.prikachi.com/images/123/6952123v.jpg" width="20px" style="border:none;" /></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="6">
+                    <div style="float: left;">
+                        <input type="button" value="I<" />
+                        <input type="button" value="<" />
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <input type="button" value=">I" />
+                        <input type="button" value=">" />
+                        <label for="drop">Page Size</label>
+                        <select id="drop">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div style="float:right;">
+                        6445654 items in 56464 pages
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Chai</td>
+                <td>$18.00</td>
+                <td>10 boxes x 20 bags</td>
+                <td>39</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Chai</td>
+                <td>$18.00</td>
+                <td>10 boxes x 20 bags</td>
+                <td>39</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Chai</td>
+                <td>$18.00</td>
+                <td>10 boxes x 20 bags</td>
+                <td>39</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Chai</td>
+                <td>$18.00</td>
+                <td>10 boxes x 20 bags</td>
+                <td>39</td>
+                <td><input type="checkbox"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

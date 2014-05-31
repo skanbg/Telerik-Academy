@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 0px;
+        }
+
+        .calculator {
+            width: 200px;
+        }
+
+        #calc_display {
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+            resize: none;
+        }
+
+        .calc_button {
+            display: block;
+            border: none;
+            width: 50px;
+            height: 50px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table class="calculator">
+            <thead>
+                <tr>
+                    <th colspan="4">
+                        <textarea id="calc_display"></textarea>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="button" value="1" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="2" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="3" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="+" class="calc_button" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="4" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="5" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="6" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="-" class="calc_button" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="7" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="8" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="9" class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="*" class="calc_button" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" value="0" class="calc_button" style="width: 100px;" />
+                    </td>
+                    <td>
+                        <input type="button" value="." class="calc_button" />
+                    </td>
+                    <td>
+                        <input type="button" value="/" class="calc_button" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
