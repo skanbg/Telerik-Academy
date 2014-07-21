@@ -1,0 +1,28 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    background-color: #dee8de;
+}
+
+#game-container {
+    width: 900px;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    background-color: #a6dc7c;
+    border: 1px solid #80b159;
+    border-radius: 10px;
+}
+
+#game-container input.valid {
+    border-color: #00CC33;
+    background-color: #99FF99;
+    color: #000;
+}
+
+#game-container input.invalid {
+    border-color: #F00;
+    background-color: #CC0066;
+    color: #fff;
+}
