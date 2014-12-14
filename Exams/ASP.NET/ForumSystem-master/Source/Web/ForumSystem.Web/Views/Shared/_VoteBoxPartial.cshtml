@@ -1,0 +1,27 @@
+﻿@model ForumSystem.Web.ViewModels.Vote.VoteViewModel
+<div id="voteBox@(Model.PostId)">
+    <div class="row">
+        <span class="qa-netvote-count">
+            <span class="qa-netvote-count-data">@(Model.PostPoints)</span><span class="qa-netvote-count-pad"> votes</span>
+        </span>
+    </div>
+    @if (User != null && User.Identity.IsAuthenticated)
+    {
+        <div class="row" style="color:white;">
+            <a title="Click to vote up"
+               data-ajax="true"
+               data-ajax-method="GET"
+               data-ajax-mode="replace"
+               data-ajax-update="#voteBox@(Model.PostId)"
+               href="/Vote/RegisterVote/?postId=@(Model.PostId)&points=1"
+               class="btn btn-primary" value="+" style="display:inline-block; color:white;">+</a>
+            <a title="Click to vote down"
+               data-ajax="true"
+               data-ajax-method="GET"
+               data-ajax-mode="replace"
+               data-ajax-update="#voteBox@(Model.PostId)"
+               href="/Vote/RegisterVote/?postId=@(Model.PostId)&points=-1"
+               class="btn btn-primary" value="–" style="display:inline-block; color:white;">–</a>
+        </div>
+    }
+</div>

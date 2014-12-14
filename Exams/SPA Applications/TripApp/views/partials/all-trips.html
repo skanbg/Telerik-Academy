@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row jumbotron center-block">
+        <div class="row">
+            <div class="col-md-10"><h1 class="text-center">Trips</h1></div>
+            <div class="col-md-2">
+                <a class="pull-right btn btn-default" ng-show="identity.isAuthenticated()" href="#/trips/create">Create
+                    trip</a>
+            </div>
+        </div>
+        <div ng-show="identity.isAuthenticated()">
+            <div class="row">
+                <div class="col-md-3 text-left">
+                    <select ng-change="loadTrips()" ng-model="filters.orderBy">
+                        <option value="">----------</option>
+                        <option value="driver">driver</option>
+                        <option value="date">date</option>
+                        <option value="seats">seats</option>
+                        <option value="from ">from city</option>
+                        <option value="to">to city</option>
+                    </select>
+                </div>
+                <div class="col-md-3 text-left">
+                    <select ng-change="loadTrips()" ng-model="filters.orderType">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+                <div class="col-md-3 text-left">
+                    <select ng-change="loadTrips()" ng-model="filters.from" id="from" class="form-control">
+                        <option value="">----------</option>
+                        <option ng-repeat="city in citiesList" value="{{city}}">{{city}}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 text-left">
+                    <select ng-change="loadTrips()" ng-model="filters.to" id="to" class="form-control">
+                        <option value="">----------</option>
+                        <option ng-repeat="city in citiesList" value="{{city}}">{{city}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-left">
+                    <button ng-click="turnPage(-1)" class="btn"><<</button>
+                    <input ng-change="filterDrivers()" style="width: 50px;" type="text" ng-model="filters.page">
+                    <button ng-click="turnPage(1)" class="btn">>></button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Driver</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure time</th>
+                <th ng-show="identity.isAuthenticated()">Is Mine</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="trip in trips">
+                <td><a href="#/trips/{{trip.id}}">{{trip.driverName}}</a></td>
+                <td>{{trip.from}}</td>
+                <td>{{trip.to}}</td>
+                <td>{{trip.departureDate}}</td>
+                <td ng-show="identity.isAuthenticated()">
+                    <i ng-hide="trip.isMine" class="cus-exclamation"></i>
+                    <i ng-show="trip.isMine" class="cus-accept"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

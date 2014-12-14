@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row jumbotron center-block">
+        <h2 class="text-left">{{driver.name}}</h2>
+
+        <div class="row">
+            <div class="col-md-2">Upcoming trips: {{driver.numberOfUpcomingTrips}}</div>
+            <div class="col-md-2">Total trips: {{driver.numberOfTotalTrips}}</div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="onlyMine" class="col-md-8 control-label">Only mine trips</label>
+
+                            <div class="col-md-4">
+                                <input id="onlyMine" type="checkbox" ng-model="filterCondition.isMine"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="onlyDriver" class="col-md-8 control-label">Only driver trips</label>
+
+                            <div class="col-md-4">
+                                <input ng-change="toggleDriverFilter(driverFilter)" id="onlyDriver" type="checkbox" ng-model="driverFilter.onlyDriver"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <select ng-change="predicate = driverFilter.type; reverse=false" ng-model="driverFilter.type">
+                            <option value="from">From</option>
+                            <option value="to">To</option>
+                            <option value="departureDate">Departure time</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Driver</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="trip in driver.trips | filter:filterCondition| orderBy:predicate:reverse">
+                <td><a href="#/drivers/{{driver.id}}">{{trip.driverName}}</a></td>
+                <td>{{trip.from}}</td>
+                <td>{{trip.to}}</td>
+                <td>{{trip.departureDate}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

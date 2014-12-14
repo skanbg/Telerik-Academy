@@ -1,0 +1,46 @@
+﻿@using ForumSystem.Web.Areas.Administration.ViewModels.ForumPosts
+@{
+    ViewBag.Title = "View";
+
+    const string ControllerName = "ForumPosts";
+}
+
+<h2>View</h2>
+
+@(Html
+    .Kendo()
+    .Grid<ForumPostViewModel>()
+    .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(post => post.AuthorName);
+                columns.Bound(post => post.Title);
+                columns.Bound(post => post.Content);
+                columns.Bound(post => post.CreatedOn);
+                columns.Bound(post => post.ModifiedOn);
+                columns.Command(com => com.Edit()).Title("Edit");
+                columns.Command(com => com.Destroy()).Title("Remove");
+            })
+            .DataSource(data => data
+                .Ajax()
+                .Filter(filters =>
+                {
+                    filters.Add(post => post.IsDeleted).IsEqualTo(false);
+                })
+                .Model(m => m.Id(post => post.Id))
+                .PageSize(5)
+                    .Update(update => update.Action("UpdatePost", ControllerName).Data("convertDate"))
+                .Destroy(destroy => destroy.Action("DestroyPost", ControllerName))
+                .Read(read => read.Action("ReadPosts", ControllerName)))
+    .Pageable(pager => pager.Refresh(true))
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .Sortable()
+    .Filterable()
+    .Groupable()
+)
+
+<script>
+    function convertDate(data) {
+        data["grid.ModifiedOn"] = data.Store ? kendo.toString(data.Store.ModifiedDate, "G") : "";
+    }
+</script>

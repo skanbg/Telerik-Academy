@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="jumbotron center-block">
+        <h1 class="text-center">Welcome to Trip Exchange</h1>
+
+        <h2 class="text-center">Find your way home</h2>
+    </div>
+    <div class="row center-block center-block">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Trips</th>
+                <th>Finished trips</th>
+                <th>Users</th>
+                <th>Drivers</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{stats.trips}}</td>
+                <td>{{stats.finishedTrips}}</td>
+                <td>{{stats.users}}</td>
+                <td>{{stats.drivers}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center">Latest trips</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Driver</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="trip in trips">
+                    <!--<td ng-hide="identity.isAuthenticated()">{{trip.driverName}}</td>-->
+                    <!--<td ng-show="identity.isAuthenticated()">-->
+                    <!--<a href="#/drivers/{{trip.driverId}}">{{trip.driverName}}</a>-->
+                    <!--</td>-->
+                    <td>
+                        <a href="#/drivers/{{trip.driverId}}">{{trip.driverName}}</a>
+                    </td>
+                    <td>{{trip.from}}</td>
+                    <td>{{trip.to}}</td>
+                    <td>{{trip.departureDate}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center">Latest drivers</h2>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Upcoming trips</th>
+                    <th>Total trips</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="driver in drivers">
+                    <!--<td ng-hide="identity.isAuthenticated()">{{driver.name}}</td>-->
+                    <!--<td ng-show="identity.isAuthenticated()">-->
+                    <!--<a href="#/drivers/{{driver.id}}">{{driver.name}}</a>-->
+                    <!--</td>-->
+                    <td>
+                        <a href="#/drivers/{{driver.id}}">{{driver.name}}</a>
+                    </td>
+                    <td>{{driver.numberOfUpcomingTrips}}</td>
+                    <td>{{driver.numberOfTotalTrips}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row jumbotron center-block">
+        <h1 class="text-center">Drivers</h1>
+
+        <div class="row" ng-show="identity.isAuthenticated()">
+            <div class="col-md-6 text-left">
+                <input type="text" ng-model="nameFilter">
+                <button ng-click="filterDrivers()" class="btn">Filter</button>
+            </div>
+            <div class="col-md-6 text-left">
+                <button ng-click="turnPage(-1)" class="btn"><<</button>
+                <input ng-change="filterDrivers()" style="width: 50px;" type="text" ng-model="pageFilter">
+                <button ng-click="turnPage(1)" class="btn">>></button>
+            </div>
+        </div>
+        <h1 ng-show="drivers.length == 0" class="text-center">No results!</h1>
+        <table class="table table-bordered" ng-hide="drivers.length == 0">
+            <thead>
+            <tr>
+                <th>Driver</th>
+                <th>Upcoming trips</th>
+                <th>Total trips</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="driver in drivers">
+                <td><a href="#/drivers/{{driver.id}}">{{driver.name}}</a></td>
+                <td>{{driver.numberOfUpcomingTrips}}</td>
+                <td>{{driver.numberOfTotalTrips}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

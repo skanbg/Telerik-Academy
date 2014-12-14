@@ -1,0 +1,46 @@
+﻿@using ForumSystem.Web.ViewModels.Home
+@model IEnumerable<IndexBlogPostViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-dismissable alert-success">
+            @Html.Encode(TempData["message"])
+        </div>
+    }
+    @foreach (IndexBlogPostViewModel post in Model)
+    {
+        <div class="row">
+            <div class="col-md-2">
+                <div class="well text-center form-group">
+                    @Html.Action("GetVoteBox", "Vote", new { postId = post.Id })
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="well text-center">
+                    <div class="row">0</div>
+                    <div class="row">answers</div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <h4>
+                        <a href="/questions/@post.Id/@HttpUtility.UrlEncode(post.Title)">@post.Title</a>
+                    </h4>
+                </div>
+                <div class="row">
+                    <p>asked 35 minutes ago in Kids Academy - програмиране за деца by a.dimitrov04 (40 points)</p>
+                </div>
+                <div class="row">
+                    @foreach (PostTagViewModel tag in post.Tags)
+                    {
+                        <span class="label label-default">@tag.Name</span>
+                    }
+                </div>
+            </div>
+        </div>
+        <hr />
+    }
+</div>

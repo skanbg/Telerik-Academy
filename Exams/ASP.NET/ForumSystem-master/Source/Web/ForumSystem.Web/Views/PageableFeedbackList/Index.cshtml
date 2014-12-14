@@ -1,0 +1,61 @@
+﻿@model ForumSystem.Web.ViewModels.PageableFeedbackList.IndexViewModel
+@{
+    ViewBag.Title = "Feedbacks List";
+}
+
+<h1>@ViewBag.Title</h1>
+
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created On</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model.Feedbacks)
+        {
+            <tr>
+                <td><strong>@feedback.AuthorName</strong></td>
+                <td>@feedback.Title</td>
+                <td>@feedback.Content</td>
+                <td>@feedback.CreatedOn</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="container text-center">
+    <ul class="pagination pagination-sm">
+        @if (Model.CurrentPage == 0)
+        {
+            <li class="disabled"><a href="#">«</a></li>
+        }
+        else
+        {
+            <li><a href="/Feedbacks/@(Model.CurrentPage -1)">«</a></li>
+        }
+
+        @for (int i = 0; i < Model.FeedbacksCount / Model.FeedbacksOnPage; i++)
+        {
+            if (i + 1 == Model.CurrentPage)
+            {
+                <li class="active"><a href="#">@(i + 1)</a></li>
+            }
+            else
+            {
+                <li><a href="/Feedbacks/@(i+1)">@(i + 1)</a></li>
+            }
+        }
+
+        @if (Model.CurrentPage == Model.FeedbacksCount / Model.FeedbacksOnPage)
+        {
+            <li class="disabled"><a href="#">»</a></li>
+        }
+        else
+        {
+            <li><a href="/Feedbacks/@(Model.CurrentPage + 1)">»</a></li>
+        }
+    </ul>
+</div>
