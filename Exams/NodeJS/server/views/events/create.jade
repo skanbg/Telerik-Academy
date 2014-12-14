@@ -1,0 +1,56 @@
+extends  ../shared/layout
+block main-content
+    form(method="post")
+        br
+        label(for="title") Title
+        input(id="title" class="form-control" type="text" name="title" placeholder="Title")
+        br
+        label(for="description") Description
+        input(id="description" class="form-control" type="text" name="description" placeholder="Description")
+        br
+        label(for="Latitude") Latitude
+        input(id="Latitude" class="form-control" type="text" name="latitude" placeholder="Latitude")
+        br
+        label(for="Longitude") Longitude
+        input(id="Longitude" class="form-control" type="text" name="longitude" placeholder="Longitude")
+        br
+        div Categories
+        if(categories)
+            each category in categories
+                input(type="radio" name="category" value='#{category}')
+                label(for="category") #{category}
+                br
+        br
+        div Type
+        input(type="radio" name="type" value='public')
+        label(for="type") Public
+        br
+        input(type="radio" name="type" value='initiative')
+        label(for="type") Initiative
+        ul(style="list-style:none")
+            li
+                each initiative in user.initiatives
+                    input(type="radio" name="initiative" value='#{initiative}')
+                    label(for="initiative") #{initiative}
+                    br
+        br
+        input(type="radio" name="type" value='initiative-season')
+        label(for="type") Initiative-and-season
+        ul(style="list-style:none")
+            li
+                -var initiative, season;
+                - for (var i = 0, len = user.initiatives.length; i < len; ++i) {
+                    -initiative = user.initiatives[i];
+                    -season = user.seasons[i];
+                    input(type="radio" name="initiative" value='#{initiative}' onclick="setSeason(this, '#{season}');")
+                    label(for="initiative") #{initiative} - #{season}
+                    br
+                - }
+                input(type="hidden" id="season" name="season")
+        br
+        label(for="date") Date
+        input(type="date" name="date")
+        br
+        input(type="submit")
+block page-scripts
+    script(src="../js/createEvent.js")

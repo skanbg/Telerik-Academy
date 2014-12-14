@@ -1,0 +1,29 @@
+extends  ../shared/layout
+block main-content
+    h1 Profile update page
+    form(method="post")
+        label(for="phoneNumber") Phone number
+        input(id="phoneNumber" class="form-control" type="text" name="phoneNumber" value="#{phoneNumber}")
+        br
+        label(for="address") Address
+        input(id="address" class="form-control" type="text" name="address" value="#{address}")
+        br
+        label(for="email") Email
+        input(id="email" class="form-control" type="text" name="email" value="#{email}")
+        br
+        label(for="twitter") Twitter
+        input(id="twitter" class="form-control" type="text" name="twitter" value="#{twitter}")
+        br
+        label(for="googlePlus") GooglePlus
+        input(id="googlePlus" class="form-control" type="text" name="googlePlus" value="#{googlePlus}")
+        br
+        label(for="facebook") Facebook
+        input(id="facebook" class="form-control" type="text" name="facebook" value="#{facebook}")
+        br
+        label(for="linkedIn") LinkedIn
+        input(id="linkedIn" class="form-control" type="text" name="linkedIn" value="#{linkedIn}")
+        br
+        label(for="profileImg") Profile Image
+        input(id="profileImg" name="profileImg" type="file")
+        br
+        input(type="submit" class="btn btn-lg" value="Register")

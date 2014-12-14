@@ -1,0 +1,11 @@
+extends  shared/layout
+block main-content
+    h1 Welcome
+    table.table.table-bordered
+        thead
+        tr
+            th Events count
+            th Total events score(Past events)
+        tr
+            td #{eventsCount}
+            td #{scoreOfAllPastEvents}

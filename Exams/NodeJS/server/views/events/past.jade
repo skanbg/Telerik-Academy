@@ -1,0 +1,21 @@
+extends  ../shared/layout
+block main-content
+    table.table.table-bordered
+        thead
+        tr
+            th Date
+            th Title
+            th Description
+            th Location
+            th Category
+            th Creator's name
+            th Creator's phone number
+        each event in events
+            tr
+                td #{event.date.toLocaleDateString("en-US")}
+                td #{event.title}
+                td #{event.description}
+                td (#{event.location.latitude}, #{event.location.longitude})
+                td #{event.category}
+                td #{event.creator.firstName} #{event.creator.lastName}
+                td #{event.creator.phoneNumber}

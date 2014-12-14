@@ -1,0 +1,20 @@
+{
+  "name": "FileUploadSystem",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    "unknown"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}

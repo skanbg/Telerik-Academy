@@ -1,0 +1,8 @@
+extends  ../shared/layout
+
+block main-content
+    table.table.table-bordered
+        each file in files
+            tr
+                td
+                    a(href="/files/download/#{file.url}") http://mysite.com/files/download/#{file.url}
